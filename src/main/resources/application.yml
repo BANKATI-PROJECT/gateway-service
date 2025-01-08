@@ -71,7 +71,7 @@ spring:
   eureka:
     client:
       service-url:
-        defaultZone: http://localhost:8761/eureka/
+        defaultZone: https://eurika-service-production.up.railway.app/eureka/
   web:
     resources:
       add-mappings: true
