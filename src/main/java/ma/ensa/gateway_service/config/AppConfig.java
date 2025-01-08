@@ -1,6 +1,6 @@
 package ma.ensa.gateway_service.config;
 
-import ma.ensa.gateway_service.filter.AuthenticationFilter;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -12,7 +12,6 @@ public class AppConfig {
     public RestTemplate template(){
         return new RestTemplate();
     }
-
 
 
 }

@@ -23,9 +23,16 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
+            String method = exchange.getRequest().getMethod().name();
+            String path = exchange.getRequest().getPath().toString();
+            System.out.println("Incoming request: "+method+"   "+path);
+
             String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
 
             if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                exchange.getResponse().getHeaders().add("Access-Control-Allow-Origin", "*"); // Or specific origin
+    exchange.getResponse().getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    exchange.getResponse().getHeaders().add("Access-Control-Allow-Headers", "Authorization, Content-Type");
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
                 return exchange.getResponse().setComplete();
             }
