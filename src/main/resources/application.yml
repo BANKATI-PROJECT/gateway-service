@@ -6,8 +6,7 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-              - "https://eurika-service-production.up.railway.app"
-              - "https://config-service-production-f025.up.railway.app"
+              - "*"
             allowedMethods:
               - "GET"
               - "POST"
